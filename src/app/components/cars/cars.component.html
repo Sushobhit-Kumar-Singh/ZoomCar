@@ -1,0 +1,123 @@
+  <div class="row">
+      <div class="col-12 text-end">
+          <button class="btn btn-success btn-sm" (click)="open()">Add New</button>
+      </div>
+  </div>
+    <div class="car-list-home-container">
+        <div class="row car-list-home">
+            <div class="col-3" *ngFor="let car of carList">
+                <app-car-card [carData]="car"></app-car-card>
+            </div>
+        </div>
+
+    </div>
+
+<div class="modal" id="newCarModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+        
+          <div class="modal-header">
+            <h4 class="modal-title">Add New Car</h4>
+            <button type="button" class="btn-close" (click)="close()" data-bs-dismiss="modal"></button>
+          </div>
+  
+       
+            
+        <div class="modal-body">
+                  
+            <div class="row">
+                  <div class="col-4">
+                  <label for="text">Brand</label>
+                  <input type="text" [(ngModel)]="carObj.brand" class="form-control">
+                  </div>
+                  <div class="col-6">
+                      <label for="text">Model Name</label>
+                      <input type="text" [(ngModel)]="carObj.name" class="form-control">
+                  </div>
+            
+              
+          
+              <div class="row">
+                <div class="col-5">
+                <label for="text">Pricing</label>
+                <input type="number" [(ngModel)]="carObj.Pricing" class="form-control">
+                </div>
+                <div class="col-4">
+                <label for="text">Pricing Description</label>
+                <input type="text" [(ngModel)]="carObj.pricingDescription" class="form-control">
+                </div>
+            
+          </div>
+          <div class="row">
+              <div class="col-4">
+                <label for="">Your Location</label>
+                <select name="" [(ngModel)]="carObj.locationId" class="form-control">
+                  <option value="">Select Your Location</option>
+                  <option *ngFor="let location of locations" [value]="location.locationId">{{location.title}}</option>                  
+                </select>
+              </div>
+                <div class="col-4">
+                  <label for="">Image Url</label>
+                  <input type="text" [(ngModel)]="carObj.imageUrl" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="">Vehical No</label>
+                    <input type="text" [(ngModel)]="carObj.vehicleNo" class="form-control">
+                </div>
+            
+          </div>
+                               
+          <div class="col-5">
+              <div class="row">
+                  <div class="col-6">
+                    <label for="">Title</label>
+                    <input type="text" [(ngModel)]="carAccessoriessObj.accessoriesTitle" class="form-control">
+                  </div>
+                    <div class="col-3">
+                        <label for="">Website</label>
+                        <div>
+                         <input type="checkbox" [(ngModel)]="carObj.showOnWebsite">
+                       </div>
+                    </div>
+                    <div class="col-3">
+                      <button class="btn btn-sm btn-primary" (click)="Add()">Add</button>
+                    </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Sl</th>
+                        <th>Title</th>
+                        <th>Website</th>
+                        
+                      </tr>
+                    </thead>
+                      <tbody>
+                        <tr *ngFor="let item of carObj.ZoomCarAccessoriess;let sr=index">
+                          <td>{{sr+1}}</td>
+                          <td>{{item.accessoriesTitle}}</td>
+                          <td> {{item.showOnWebsite? 'Yes':'No'}}</td>
+                          
+                        </tr>
+                      </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+        
+              
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="saveCar()">Save Car</button>
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
